@@ -1,3 +1,4 @@
+using DirectScale.Disco.Extension.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +25,8 @@ namespace ClientExtension
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDirectScale();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +48,8 @@ namespace ClientExtension
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseDirectScale();
 
             app.UseEndpoints(endpoints =>
             {
